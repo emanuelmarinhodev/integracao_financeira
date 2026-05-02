@@ -1,4 +1,5 @@
 const investimentosService = require('../services/investimentoService')
+const calculoService = require('../services/calculoService')
 
 const getIndicadores = (req, res) => {
     const dados = investimentosService.buscarIndicadores()
@@ -10,6 +11,20 @@ const getIndicadores = (req, res) => {
     res.json(dados)
 }
 
+const calcular = async (req, res) => {
+    const {id} = req.params
+
+    try {
+        const resultado = await calculoService.calcularProjecao(id)
+        res.json(resultado)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+
+
 module.exports = {
-    getIndicadores
+    getIndicadores,
+    calcular
 }
