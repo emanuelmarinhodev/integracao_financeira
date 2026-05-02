@@ -10,6 +10,8 @@ const getIndicadores = (req, res) => {
     res.json(dados)
 }
 
+
+
 module.exports = {
-    getIndicadores
+    getIndicadores,
 }
